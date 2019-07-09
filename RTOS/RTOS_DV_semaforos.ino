@@ -5,7 +5,7 @@ TM1637Display display(6, 7);
 
 int cont = 0;//contador para auxiliar numero a ser mostrado no display
 int nota = 0;
-int pino_buzzer = 3;
+int pino_buzzer = 5;
 int t_vd=20;//tempo de verde
 int t_am=5;//tempo de amarelo
 int t_vm=20;//tempo de vermelho
@@ -15,12 +15,12 @@ int tempo_pedestre[] = {tempo_via[2] - tempo_via[1], tempo_via[1] - tempo_via[0]
 int estado = 0;//0=verde,1=amarelo,2=vermelho
 int estado_pedestre = 2;//0=verde,1=verde piscando,2=vermelho
 
-int verde = 2;//pino para sinal verde da via
-int amarelo = 4;//pino para sinal amarelo da via
+int verde = 13;//pino para sinal verde da via
+int amarelo = 12;//pino para sinal amarelo da via
 int vermelho = 8;//pino para sinal vermelho da via
-int verde_pedestre = 12;//pino para sinal verde do pedestre
-int vermelho_pedestre = 13;//pino para sinal vermelho do pedestre
-int pino_ativo=10;
+int verde_pedestre = 4;//pino para sinal verde do pedestre
+int vermelho_pedestre = 2;//pino para sinal vermelho do pedestre
+int pino_ativo=10;//pino para acender LED de atividade
 
 int ativo = 0;//Flag para funcionamento do sistema. Quando 0, o sistema fica em espera.
 int buzz = 0;
@@ -273,6 +273,6 @@ void TaskAnalogRead(void *pvParameters) // This is a task.
           }
         // print out the value you read:
         //Serial.println(sensorValue);
-        vTaskDelay(1); // one tick delay (15ms) in between reads for stability
+        vTaskDelay(100/portTICK_PERIOD_MS); // one tick delay (15ms) in between reads for stability
     }
 }
